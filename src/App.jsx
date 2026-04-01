@@ -197,7 +197,12 @@ export default function App() {
   const [answers, setAnswers] = useState({});
   const [currentQ, setCurrentQ] = useState(0);
   const [showResult, setShowResult] = useState(false);
+  const [dark, setDark] = useState(false);
   const ref = useRef(null);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+  }, [dark]);
 
   const scroll = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -262,9 +267,20 @@ export default function App() {
 
       {/* Header */}
       <header className="sim-header">
-        <p className="sim-brand">RTN Communication &amp; Literacy</p>
-        <h1 className="sim-title">Dyslexia simulation</h1>
-        <p className="sim-subtitle">Inspired by the work of Daniel Britton</p>
+        <div className="sim-header-row">
+          <div>
+            <p className="sim-brand">RTN Communication &amp; Literacy</p>
+            <h1 className="sim-title">Dyslexia simulation</h1>
+            <p className="sim-subtitle">Inspired by the work of Daniel Britton</p>
+          </div>
+          <button
+            className="theme-toggle"
+            onClick={() => setDark((d) => !d)}
+            aria-label="Toggle theme"
+          >
+            {dark ? "☾ Dark" : "☀ Light"}
+          </button>
+        </div>
       </header>
 
       <StepIndicator current={stepIndex} total={STEPS.length} />
