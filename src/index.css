@@ -26,10 +26,15 @@
   --border-err: #f09595;
   --r: 8px;
   --r-lg: 12px;
-  --sans: 'Outfit', sans-serif;
+  --sans: 'DM Sans', 'Outfit', sans-serif;
   --mono: 'Space Mono', monospace;
   --serif: Georgia, "Times New Roman", serif;
-  --teal: #1b7a6e;
+  --fh: 'Fraunces', Georgia, serif;
+  --teal: #8a6cb8;
+  --pu: #8a6cb8;
+  --pi: #d4718e;
+  --ag: linear-gradient(135deg, #8a6cb8, #d4718e);
+  --rainbow: linear-gradient(90deg, #F9C5C5, #FDDBB4, #FFF0A8, #C2EDD0, #BEE3F8, #D8C8F8, #EED4F8);
   --toggle-border: #ccc;
   --toggle-text: #888;
   --toggle-hover-border: #999;
@@ -76,7 +81,7 @@ button {
 }
 button:active { transform: scale(0.98); }
 button:disabled { cursor: default; opacity: 0.7; }
-::selection { background: rgba(27, 122, 110, 0.2); }
+::selection { background: rgba(138, 108, 184, 0.2); }
 
 /* ── Theme toggle ── */
 
@@ -105,6 +110,14 @@ button:disabled { cursor: default; opacity: 0.7; }
   max-width: 640px;
   margin: 0 auto;
   padding: 2rem 1.25rem 3rem;
+}
+
+.rainbow-strip {
+  height: 5px;
+  border-radius: 3px;
+  background: var(--rainbow);
+  max-width: 640px;
+  margin: 0 auto 1.25rem;
 }
 
 .sim-section {
@@ -140,8 +153,9 @@ button:disabled { cursor: default; opacity: 0.7; }
 }
 
 .sim-title {
-  font-size: 28px;
-  font-weight: 600;
+  font-family: var(--fh);
+  font-size: 30px;
+  font-weight: 700;
   letter-spacing: -0.5px;
   color: var(--text);
   margin-bottom: 4px;
@@ -192,8 +206,10 @@ button:disabled { cursor: default; opacity: 0.7; }
 }
 
 .card-title {
-  font-size: 18px;
-  font-weight: 600;
+  font-family: var(--fh);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
   margin-bottom: 1rem;
   color: var(--text);
 }
@@ -255,17 +271,19 @@ button:disabled { cursor: default; opacity: 0.7; }
 /* ── Buttons ── */
 
 .btn-primary {
-  background: var(--teal);
+  background: var(--ag);
   color: #fff;
   border: none;
-  border-radius: var(--r);
+  border-radius: 999px;
   padding: 12px 36px;
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.2px;
+  box-shadow: 0 3px 14px rgba(138, 108, 184, 0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
 }
 
-.btn-primary:hover { opacity: 0.9; }
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 22px rgba(138, 108, 184, 0.4); }
 
 .btn-lg {
   padding: 14px 44px;
@@ -384,8 +402,10 @@ button:disabled { cursor: default; opacity: 0.7; }
 }
 
 .section-title {
-  font-size: 18px;
-  font-weight: 600;
+  font-family: var(--fh);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
   color: var(--text);
   margin-bottom: 1rem;
 }
@@ -455,7 +475,7 @@ button:disabled { cursor: default; opacity: 0.7; }
 
 .option-btn:hover:not(:disabled) {
   border-color: var(--teal);
-  background: rgba(27, 122, 110, 0.04);
+  background: rgba(138, 108, 184, 0.04);
   transform: translateX(4px);
 }
 
@@ -487,7 +507,7 @@ button:disabled { cursor: default; opacity: 0.7; }
 .option-btn:hover:not(:disabled) .option-letter {
   border-color: var(--teal);
   color: var(--teal);
-  background: rgba(27, 122, 110, 0.08);
+  background: rgba(138, 108, 184, 0.08);
 }
 
 .option-text {

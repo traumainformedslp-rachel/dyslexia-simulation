@@ -264,6 +264,7 @@ export default function App() {
 
   return (
     <div ref={ref} className="sim-container">
+      <div className="rainbow-strip" aria-hidden="true"></div>
 
       {/* Header */}
       <header className="sim-header">
@@ -436,7 +437,7 @@ export default function App() {
               { label: "Version A", sub: "Vowels", val: fmt(times.readA), color: "#534AB7" },
               { label: "Version B", sub: "Fragments", val: fmt(times.readB), color: "#D85A30" },
               { label: "Version C", sub: "Jumbled", val: fmt(times.readC), color: "#1D9E75" },
-              { label: "Score", sub: "Correct", val: `${score}/${QUESTIONS.length}`, color: "#1B7A6E" },
+              { label: "Score", sub: "Correct", val: `${score}/${QUESTIONS.length}`, color: "#8a6cb8" },
             ].map((s, i) => (
               <div key={i} className="stat-card" style={{ borderTopColor: s.color }}>
                 <p className="stat-label">{s.label}</p>
