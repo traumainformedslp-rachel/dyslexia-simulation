@@ -165,7 +165,7 @@ const VERSIONS = [
     label: "A",
     name: "Vowels removed",
     desc: "All vowels have been stripped. Try to read and understand the passage.",
-    color: "#534AB7",
+    color: "#7a5ea8", // lavender-deep
     render: (t) => <MonoText text={stripVowels(t)} />,
   },
   {
@@ -173,7 +173,7 @@ const VERSIONS = [
     label: "B",
     name: "Letter fragments",
     desc: "Letters are clipped, rotated, mirrored, and swapped. The shapes are unreliable.",
-    color: "#D85A30",
+    color: "#c47086", // pink-deep
     render: (t) => <DistortedFragments text={t} />,
   },
   {
@@ -181,7 +181,7 @@ const VERSIONS = [
     label: "C",
     name: "Jumbled letters",
     desc: "Letters within each word have been rearranged. First and last letters stay in place.",
-    color: "#1D9E75",
+    color: "#4f9c74", // mint-deep
     render: (t) => <MonoText text={jumbleText(t)} />,
   },
 ];
@@ -434,10 +434,10 @@ export default function App() {
 
           <div className="stats-grid">
             {[
-              { label: "Version A", sub: "Vowels", val: fmt(times.readA), color: "#534AB7" },
-              { label: "Version B", sub: "Fragments", val: fmt(times.readB), color: "#D85A30" },
-              { label: "Version C", sub: "Jumbled", val: fmt(times.readC), color: "#1D9E75" },
-              { label: "Score", sub: "Correct", val: `${score}/${QUESTIONS.length}`, color: "#8a6cb8" },
+              { label: "Version A", sub: "Vowels", val: fmt(times.readA), color: "#7a5ea8" },
+              { label: "Version B", sub: "Fragments", val: fmt(times.readB), color: "#c47086" },
+              { label: "Version C", sub: "Jumbled", val: fmt(times.readC), color: "#4f9c74" },
+              { label: "Score", sub: "Correct", val: `${score}/${QUESTIONS.length}`, color: "#b8a0d8" },
             ].map((s, i) => (
               <div key={i} className="stat-card" style={{ borderTopColor: s.color }}>
                 <p className="stat-label">{s.label}</p>
