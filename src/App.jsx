@@ -165,7 +165,7 @@ const VERSIONS = [
     label: "A",
     name: "Vowels removed",
     desc: "All vowels have been stripped. Try to read and understand the passage.",
-    color: "#2a9d8f", // teal
+    color: "#1f9d8a", // teal
     render: (t) => <MonoText text={stripVowels(t)} />,
   },
   {
@@ -173,7 +173,7 @@ const VERSIONS = [
     label: "B",
     name: "Letter fragments",
     desc: "Letters are clipped, rotated, mirrored, and swapped. The shapes are unreliable.",
-    color: "#1f7a6f", // teal-deep
+    color: "#26838f", // teal-deep
     render: (t) => <DistortedFragments text={t} />,
   },
   {
@@ -181,7 +181,7 @@ const VERSIONS = [
     label: "C",
     name: "Jumbled letters",
     desc: "Letters within each word have been rearranged. First and last letters stay in place.",
-    color: "#177a6b", // teal-dark
+    color: "#31678e", // teal-dark
     render: (t) => <MonoText text={jumbleText(t)} />,
   },
 ];
@@ -270,7 +270,7 @@ export default function App() {
       <header className="sim-header">
         <div className="sim-header-row">
           <div>
-            <p className="sim-brand">RTN Communication &amp; Literacy</p>
+            <p className="sim-brand">RTN | Speech, Language &amp; Literacy</p>
             <h1 className="sim-title">Dyslexia simulation</h1>
             <p className="sim-subtitle">Inspired by the work of Daniel Britton</p>
           </div>
@@ -434,10 +434,10 @@ export default function App() {
 
           <div className="stats-grid">
             {[
-              { label: "Version A", sub: "Vowels", val: fmt(times.readA), color: "#2a9d8f" },
-              { label: "Version B", sub: "Fragments", val: fmt(times.readB), color: "#1f7a6f" },
-              { label: "Version C", sub: "Jumbled", val: fmt(times.readC), color: "#177a6b" },
-              { label: "Score", sub: "Correct", val: `${score}/${QUESTIONS.length}`, color: "#2a9d8f" },
+              { label: "Version A", sub: "Vowels", val: fmt(times.readA), color: "#1f9d8a" },
+              { label: "Version B", sub: "Fragments", val: fmt(times.readB), color: "#26838f" },
+              { label: "Version C", sub: "Jumbled", val: fmt(times.readC), color: "#31678e" },
+              { label: "Score", sub: "Correct", val: `${score}/${QUESTIONS.length}`, color: "#1f9d8a" },
             ].map((s, i) => (
               <div key={i} className="stat-card" style={{ borderTopColor: s.color }}>
                 <p className="stat-label">{s.label}</p>
@@ -518,7 +518,7 @@ export default function App() {
 
       {/* Footer */}
       <footer className="sim-footer">
-        <p>RTN Communication &amp; Literacy</p>
+        <p>RTN | Speech, Language &amp; Literacy</p>
         <p>rachelslp.org</p>
       </footer>
     </div>
