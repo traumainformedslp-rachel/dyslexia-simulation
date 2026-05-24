@@ -165,7 +165,7 @@ const VERSIONS = [
     label: "A",
     name: "Vowels removed",
     desc: "All vowels have been stripped. Try to read and understand the passage.",
-    color: "#534AB7",
+    color: "#E090D0", // teal
     render: (t) => <MonoText text={stripVowels(t)} />,
   },
   {
@@ -173,7 +173,7 @@ const VERSIONS = [
     label: "B",
     name: "Letter fragments",
     desc: "Letters are clipped, rotated, mirrored, and swapped. The shapes are unreliable.",
-    color: "#D85A30",
+    color: "#D8A0C8", // teal-deep
     render: (t) => <DistortedFragments text={t} />,
   },
   {
@@ -181,7 +181,7 @@ const VERSIONS = [
     label: "C",
     name: "Jumbled letters",
     desc: "Letters within each word have been rearranged. First and last letters stay in place.",
-    color: "#1D9E75",
+    color: "#31678e", // teal-dark
     render: (t) => <MonoText text={jumbleText(t)} />,
   },
 ];
@@ -197,7 +197,12 @@ export default function App() {
   const [answers, setAnswers] = useState({});
   const [currentQ, setCurrentQ] = useState(0);
   const [showResult, setShowResult] = useState(false);
+  const [dark, setDark] = useState(false);
   const ref = useRef(null);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+  }, [dark]);
 
   const scroll = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -259,12 +264,24 @@ export default function App() {
 
   return (
     <div ref={ref} className="sim-container">
+      <div className="rainbow-strip" aria-hidden="true"></div>
 
       {/* Header */}
       <header className="sim-header">
-        <p className="sim-brand">RTN Communication &amp; Literacy</p>
-        <h1 className="sim-title">Dyslexia simulation</h1>
-        <p className="sim-subtitle">Inspired by the work of Daniel Britton</p>
+        <div className="sim-header-row">
+          <div>
+            <p className="sim-brand">RTN | Speech, Language &amp; Literacy</p>
+            <h1 className="sim-title">Dyslexia simulation</h1>
+            <p className="sim-subtitle">Inspired by the work of Daniel Britton</p>
+          </div>
+          <button
+            className="theme-toggle"
+            onClick={() => setDark((d) => !d)}
+            aria-label="Toggle theme"
+          >
+            {dark ? "☾ Dark" : "☀ Light"}
+          </button>
+        </div>
       </header>
 
       <StepIndicator current={stepIndex} total={STEPS.length} />
@@ -417,10 +434,10 @@ export default function App() {
 
           <div className="stats-grid">
             {[
-              { label: "Version A", sub: "Vowels", val: fmt(times.readA), color: "#534AB7" },
-              { label: "Version B", sub: "Fragments", val: fmt(times.readB), color: "#D85A30" },
-              { label: "Version C", sub: "Jumbled", val: fmt(times.readC), color: "#1D9E75" },
-              { label: "Score", sub: "Correct", val: `${score}/${QUESTIONS.length}`, color: "#1B7A6E" },
+              { label: "Version A", sub: "Vowels", val: fmt(times.readA), color: "#E090D0" },
+              { label: "Version B", sub: "Fragments", val: fmt(times.readB), color: "#D8A0C8" },
+              { label: "Version C", sub: "Jumbled", val: fmt(times.readC), color: "#31678e" },
+              { label: "Score", sub: "Correct", val: `${score}/${QUESTIONS.length}`, color: "#E090D0" },
             ].map((s, i) => (
               <div key={i} className="stat-card" style={{ borderTopColor: s.color }}>
                 <p className="stat-label">{s.label}</p>
@@ -501,7 +518,7 @@ export default function App() {
 
       {/* Footer */}
       <footer className="sim-footer">
-        <p>RTN Communication &amp; Literacy</p>
+        <p>RTN | Speech, Language &amp; Literacy</p>
         <p>rachelslp.org</p>
       </footer>
     </div>
